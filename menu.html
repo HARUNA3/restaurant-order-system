@@ -44,12 +44,12 @@
                 <div class="flex justify-between items-center mb-4">
                     <h2 class="text-xl md:text-2xl font-bold">Order</h2>
                     <!-- toggle button for mobile -->
-                    <button id="toggleCart" class="flex-1 overflow-y-auto space-y-2 mb-4 hidden md:block">
+                    <button id="toggleCart" class="md:hidden bg-blue-500 text-white px-3 py-1 rounded text-sm">
                         Show (<span id="cartCount">0</span>)
                     </button>
                 </div>
 
-                <div id="orderList" class="md:hidden bg-blue-500 text-white px-3 py-1 rounded text-sm">
+                <div id="orderList" class="flex-1 overflow-y-auto space-y-2 mb-4 hidden md:block">
                     <p class="text-gray-400 text-center text-sm">No items yet</p>
                 </div>
 
@@ -244,7 +244,7 @@
                     div.innerHTML = `
                         <div class="flex-1">
                             <div class="font-semibold"> ${item.name} </div>
-                            <div class="text-xs" text-gray-500> ${item.category} </div>
+                            <div class="text-xs text-gray-500"> ${item.category} </div>
                         </div>
                         <button class="text-red-500 hover:text-red-700 font-bold ml-2" onclick="removeFromOrder(${item.id})">
                             X
