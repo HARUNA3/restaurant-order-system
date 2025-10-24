@@ -202,8 +202,8 @@ fetch('/public/data/menuData.json')
             orderCart.classList.remove("flex");
         }
 
-        CartBtn.onclick = openCart;
-        closeCart.onclick = closeCartFn;
+        if (CartBtn) CartBtn.onclick = openCart;
+        if (closeCart) closeCart.onclick = closeCartFn;
 
         document.getElementById("toggleCart").onclick = () => {
             orderList.classList.toggle("hidden");
