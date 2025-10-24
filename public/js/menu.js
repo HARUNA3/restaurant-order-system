@@ -1,3 +1,37 @@
+async function loadMenu() {
+  try {
+    const res = await fetch('/public/data/menuData.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    return data;
+  } catch (e1) {
+    // fallback to relative path (in case leading slash is rewritten)
+    const res2 = await fetch('public/data/menuData.json', { cache: 'no-store' });
+    if (!res2.ok) throw new Error(`HTTP ${res2.status}`);
+    return res2.json();
+  }
+}
+
+loadMenu()
+  .then(menuData => {
+    // Transform data safely
+    menuData.Roll = (menuData.Roll || []).map(item =>
+      typeof item === "string"
+        ? { name: item, options: ["roll", "hand roll"] }
+        : { ...item, options: item.options ?? ["roll", "hand roll"] }
+    );
+    menuData.ALaCarto = (menuData.ALaCarto || []).map(item =>
+      typeof item === "string"
+        ? { name: item, options: ["Sashimi", "Sushi"] }
+        : { ...item, options: item.options ?? ["Sashimi", "Sushi"] }
+    );
+    initializeMenu(menuData);
+  })
+  .catch(err => {
+    console.error('Failed to load menuData.json', err);
+    alert('Failed to load menu. Please try again.');
+  });
+
 fetch('/public/data/menuData.json')
     .then(res => {
         if(!res.ok) throw new Error(`Failed to load menuData.json: ${res.status}`);
@@ -21,7 +55,7 @@ fetch('/public/data/menuData.json')
     })
     .catch(err => {
         console.error(err);
-        alert("Fialed to load menu. Please try again.");
+        alert("Failed to load menu. Please try again.");
     });
 
     let currentOrder = [];
@@ -237,6 +271,13 @@ fetch('/public/data/menuData.json')
                 console.error("Error sending order:", err);
                 alert("Failed to send order!");
             });
+        }
+
+        const toggleEl = document.getElementById("toggleCart");
+        if (toggleEl) {
+          toggleEl.onclick = () => {
+            orderList.classList.toggle("hidden");
+          };
         }
 
 }
