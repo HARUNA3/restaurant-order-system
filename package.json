@@ -1,0 +1,22 @@
+{
+  "name": "rollnbowl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HARUNA3/restaurant-order-system.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/HARUNA3/restaurant-order-system/issues"
+  },
+  "homepage": "https://github.com/HARUNA3/restaurant-order-system#readme"
+}

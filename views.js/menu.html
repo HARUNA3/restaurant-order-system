@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width", initial-scale="1.0">
+        <title>Menu Screen</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-gray-100">
+
+        <div class="flex h-screen overflow-hidden" id="menuScreen">
+
+            <!-- left -->
+           <div id="categoryMenu" class="w-1/3 bg-base-200 p-6 transition-transform duration-300 overflow-y-auto">
+                <ul id="categoryList" class="space-y-4"></ul>
+           </div>
+
+            <!-- middle -->
+            <div class="flex-1 flex flex-col overflow-hidden">
+                <div id="itemMenu" class="flex-1 bg-white p-6 hidden overflow-y-auto">
+                    <button class="mb-4 px-3 py-1 bg-gray-300 rounded" id="backBtn">Back</button>
+                    <h2 id="categoryTitle" class="text-2xl font-bold mb-4"></h2>
+
+                    <div id="itemGrid" class="grid gap-4 content-start
+                        grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5">
+                    </div>
+                </div>
+
+                <div id="dividerLine" class="border-t-4 corder-gray-300 hidden"></div>
+
+                <!-- more detail -->
+                <div id="detailMenu" class="flex-1 bg-white p-6 hidden overflow-y-auto">
+                    <button class="mb-4 px-3 py-1 bg-gray-300 rounded" id="backToItemsBtn">Back</button>
+                    <h2 id="menuTitle" class="text-2xl font-bold mb-4"></h2>
+
+                    <div id="detailGrid" class="grid gap-4 content-start
+                    grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5">
+                    </div>
+                </div>
+            </div>
+
+            <!-- right order cart bottom on mobile, right on desktop -->
+            <div id="orderCart" class="w-full md:w-1/3 bg-gray-50 p-4 md:p-6 border-t-4 md:border-t-0 md:border-1-4 border-gray-300 flex flex-col max-h-1/3 md:max-h-full">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl md:text-2xl font-bold">Order</h2>
+                    <!-- toggle button for mobile -->
+                    <button id="toggleCart" class="flex-1 overflow-y-auto space-y-2 mb-4 hidden md:block">
+                        Show (<span id="cartCount">0</span>)
+                    </button>
+                </div>
+
+                <div id="orderList" class="flex-1 overflow-y-auto space-y-2 mb-4 hidden md:block">
+                    <p class="text-gray-400 text-center text-sm">No items yet</p>
+                </div>
+
+                <div class="border-t-2 border-gray-300 pt-3 md:pt-4">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="font-bold text-lg md:text-xl">Total: </span>
+                        <span id="totalItems" class="font-bold text-lg md:text-xl">0</span>
+                    </div>
+                    <button id="clearOrder" class="w-full bg-red-500 text-white py-2 rounded mb-2 hover:bg-red-600 text-sm md:text-base">
+                        Clear Order
+                    </button>
+                    <button id="sendOrder" class="w-full bg-green-500 text-white py-2 rounded mb-2 hover:bg-green-600 text-sm md:text-base">
+                        Send Order
+                    </button>
+                </div>
+            </div>
+            
+
+        </div>
+
+        <script>
+            const menuData = {
+                Appetizer: ["Edamame","Gyoza", "Age Tofu"],
+                SaladAndSoup: ["Green Salad", "Avocado Salad", "Wakame Salad"],
+                Lunch: ["Sashimi", "Sashimi & California", "Sushi & California"],
+                MainDish:["Tofu Teriyaki", "Chicken Teriyaki", "Beef Teriyaki"],
+                Noodle: ["U-don", "Ramen", "Yaki-Udon"],
+                Bento: ["A (Sushi & Tempura)", "B (Sashimi & Tempura)", 
+                { name: "C (Teriyaki & Tempura)", options: ["Chicken", "Beef", "Salmon"]},, "D (Combination)", "E (Vegetarian)"],
+                Roll: ["California", "Spicy California", "Tuna"],
+                SpecialRoll: ["Fireball", "Dynamite", "Spider", "Rainbow", "Kamikaze", "Salmon Love", "Red Dragon", "Green Dragon", "Black Dragon", "Golden Dragon",
+                    "White Dragon", "Crispy Salmon", "Crispy California", "Philadelphia", "Ocean Crab", "Fantastic", "Legend Dynamite", "Legend Dragon", "Tuna King",
+                    "Alaska", "Samurai", "Futo Maki", "Tempura Mix", "Crazy Scallop", "SOS", "Chicken Teriyaki", "Bulgogi", "Light Philly", "Volcano", "Caterpillar", "Ever Green"
+                ],
+                SushiCombo: ["Matus (18pcs)", "Take (16pcs)", "Maki Combo(22pcs)"],
+                ComboForTwo: [],
+                ALaCarto: ["Maguro", "Shiro Maguro", "Sake", "Ebi", "Tako", "Unagi", "Kani", "Inari", "Tamago"]
+            }
+
+            // Order Storage
+            let currentOrder = [];
+
+            const categoryMenu = document.getElementById("categoryMenu");
+            const itemMenu = document.getElementById("itemMenu");
+            const categoryList = document.getElementById("categoryList");
+            const categoryTitle = document.getElementById("categoryTitle");
+            const itemGrid = document.getElementById("itemGrid");
+            const menuTitle = document.getElementById("menuTitle")
+            const detailMenu = document.getElementById("detailMenu");
+            const detailGrid = document.getElementById("detailGrid");
+            const dividerLine = document.getElementById("dividerLine");
+            const orderList = document.getElementById("orderList");
+            const totalItems = document.getElementById("totalItems");
+            const cartCount = document.getElementById("cartCount");
+
+            Object.keys(menuData).forEach(category => {
+                const li = document.createElement("li");
+                li.className = "cursor-pointer p-4 bg-white rounded shadow hover:bg-gray-100 text-center font-semibold";
+                li.textContent = category;
+
+                li.onclick = () => showItems(category);
+                categoryList.appendChild(li);
+            });
+
+            function showItems(category) {
+                categoryTitle.textContent = category;
+                const items = menuData[category];
+                itemGrid.innerHTML = "";
+
+                items.forEach(item => {
+                    const name = typeof item === "string" ? item: item.name;
+
+                    const div = document.createElement("div");
+                    div.className = "p-3 border rounded shadow cursor-pointer hover:bg-gray-100";
+                    div.textContent = name;
+
+                    div.onclick = () => {
+                        if (typeof item === "object" && item.options) {
+                            showSubOptions(item, category);
+                        } else {
+                            addToOrder(category, name);
+                        }
+                    };
+
+                    itemGrid.appendChild(div);
+                });
+
+                if (window.innerWidth < 768) {
+                    categoryMenu.classList.add("hidden");
+                }
+                itemMenu.classList.remove("hidden");
+            }
+
+            function showSubOptions(item, category) {
+                menuTitle.textContent = item.name;
+                detailGrid.innerHTML = "";
+                
+                item.options.forEach(option => {
+                    const div = document.createElement("div");
+                    div.className = "p-3 border rounded shadow cursor-pointer hover:bg-gray-100";
+                    div.textContent = option;
+
+                    div.onclick = () => {
+                        addToOrder(category, `${item.name} - ${option}`);
+                    };
+                    detailGrid.appendChild(div);
+                })
+
+                // itemMenu.classList.add("hidden");
+                detailMenu.classList.remove("hidden");
+                dividerLine.classList.remove("hidden");
+            }
+
+            function addToOrder(category, itemName){
+                const orderItem = {
+                    id: Date.now(),
+                    category: category,
+                    name: itemName,
+                    timestamp: new Date().toLocaleTimeString()
+                };
+
+                currentOrder.push(orderItem);
+                updateOrderDisplay();
+            }
+
+            function updateOrderDisplay() {
+                if(currentOrder.length === 0) {
+                    orderList.innerHTML = `<p class="text-gray-400 text-center text-sm">No Items yes</p>`;
+                    totalItems.textContent = "0";
+                    cartCount.textContent = "0";
+                    return;
+                }
+
+                orderList.innerHTML = "";
+                currentOrder.forEach((item) => {
+                    const div = document.createElement("div");
+                    div.className = "bg-white p-2 md:p-3 rounded shadow flex justify-between items-center text-sm";
+                    div.innerHTML = `
+                        <div class="flex-1">
+                            <div class="font-semibold"> ${item.name} </div>
+                            <div class="text-xs" text-gray-500> ${item.category} </div>
+                        </div>
+                        <button class="text-red-500 hover:text-red-700 font-bold ml-2" onclick="removeFromOrder(${item.id})">
+                            X
+                        </button>
+                    `;
+                    orderList.appendChild(div);
+                });
+
+                totalItems.textContent = currentOrder.length;
+                cartCount.textContent = currentOrder.length;
+            }
+
+            function removeFromOrder(itemId){
+                currentOrder = currentOrder.filter(item => item.id !== itemId);
+                updateOrderDisplay();
+            }
+
+            // back button 
+            document.getElementById("backBtn").onclick = () => {
+                itemMenu.classList.add("hidden");
+                detailMenu.classList.add("hidden");
+            }
+
+            document.getElementById("backToItemsBtn").onclick = () => {
+                detailMenu.classList.add("hidden");
+                itemMenu.classList.remove("hidden");
+            }
+
+            document.getElementById("toggleCart").onclick = () => {
+                orderList.classList.toggle("hidden");
+            }
+
+            document.getElementById("clearOrder").onclick = () => {
+                if(confirm("Clear all items?")) {
+                    currentOrder = [];
+                    updateOrderDisplay();
+                }
+            }
+
+            document.getElementById("sendOrder").onclick = () => {
+                if(currentOrder.length === 0){
+                    alert("No items in order");
+                    return;
+                }
+
+                console.log("Sending to POS: ", JSON.stringify(currentOrder, null, 2));
+                alert(`Order sent!\n ${currentOrder.length} items`);
+
+                currentOrder = [];
+                updateOrderDisplay();
+            }
+
+        </script>
+
+    </body>
+</html>

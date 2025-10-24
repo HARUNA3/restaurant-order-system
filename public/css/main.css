@@ -1,5 +1,25 @@
+
+
 .grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
+}
+
+.table {
+    background-color: #f3f3f3;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.table:hover {
+    background-color: #d1e7ff;
 }
