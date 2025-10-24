@@ -29,11 +29,14 @@ fetch('/public/data/menuData.json')
     function updateOrderDisplay() {
         const orderList = document.getElementById("orderList");
         const totalItems = document.getElementById("totalItems");
+        const tempTotalItems = document.getElementById("tempTotalItems");
         const cartCount = document.getElementById("cartCount");
+        
 
         if(currentOrder.length === 0) {
             orderList.innerHTML = `<p class="text-gray-400 text-center text-sm">No Items yet</p>`;
             totalItems.textContent = "0";
+            tempTotalItems.textContent = "0";
             cartCount.textContent = "0";
             return;
         }
@@ -55,6 +58,7 @@ fetch('/public/data/menuData.json')
         });
 
         totalItems.textContent = currentOrder.length;
+        tempTotalItems.textContent = currentOrder.length;
         cartCount.textContent = currentOrder.length;
     }
 
@@ -180,6 +184,9 @@ fetch('/public/data/menuData.json')
         document.getElementById("backBtn").onclick = () => {
             itemMenu.classList.add("hidden");
             detailMenu.classList.add("hidden");
+            categoryMenu.classList.remove("w-1/4");
+            categoryMenu.classList.remove("hidden");
+            categoryMenu.classList.add("w-1/2");
         }
 
         document.getElementById("backToItemsBtn").onclick = () => {
@@ -204,10 +211,6 @@ fetch('/public/data/menuData.json')
 
         if (CartBtn) CartBtn.onclick = openCart;
         if (closeCart) closeCart.onclick = closeCartFn;
-
-        document.getElementById("toggleCart").onclick = () => {
-            orderList.classList.toggle("hidden");
-        }
 
         document.getElementById("clearOrder").onclick = () => {
             if(confirm("Clear all items?")) {
@@ -237,13 +240,6 @@ fetch('/public/data/menuData.json')
                 console.error("Error sending order:", err);
                 alert("Failed to send order!");
             });
-        }
-
-        const toggleEl = document.getElementById("toggleCart");
-        if (toggleEl) {
-          toggleEl.onclick = () => {
-            orderList.classList.toggle("hidden");
-          };
         }
 
 }
