@@ -1,6 +1,6 @@
 fetch('/public/data/menuData.json')
     .then(res => {
-        if(!res.ok) throw new Error(`Failed to load menuData.json: ${res.status}`);
+        if(!res.ok) throw new Error(`HTTP: ${res.status}`);
         return res.json();
     })
     .then(menuData => {
@@ -20,7 +20,7 @@ fetch('/public/data/menuData.json')
         initializeMenu(menuData);
     })
     .catch(err => {
-        console.error(err);
+        console.error('Failed to load menuData.json', err);
         alert("Failed to load menu. Please try again.");
     });
 
