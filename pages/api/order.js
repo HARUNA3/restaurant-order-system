@@ -1,3 +1,5 @@
+// Server side, keep separate
+
 export default function handler(req, res){
     if(req.method === "POST"){
         const order = req.body;
