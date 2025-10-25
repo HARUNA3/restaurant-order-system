@@ -1,34 +1,239 @@
 {
-    "Appetizer": ["Edamame",{"name":"Gyoza", "options":["Beef", "Vegetable"]}, "Age Tofu",{"name":"Mixed Tempura(7pcs)", "desc":"Deep fried Shrimp 2pcs, vegetables 5pcs"}, "Shrimp Tempura(5pcs)",
-        "Vegetbale Tempura(7pcs)", "Spring Roll(4pcs)", "Soft Shell Crab", {"name":"Sushi Pizza", "options": ["salmon", "Tuna", "Crab meat", "avocado"] },
-        "Jap Chae", "Ebi Shumai(6pcs)", "Takoyaki(6pcs)", "Chicken Karaage(10pcs)", {"name":"Cala mari(10pcs)", "desc":"Deep fried squid tube slices"},
-        "Pressed Aburi Sushi(6pcs)"
-    ],
-    "SaladAndSoup": ["Green Salad", "Avocado Salad", "Wakame Salad", "Sunomono Salad", "Spicy Salmon Salad", "Spicy Tuna Salad", "Kani Salad", "Smoke Salmon Salad",
-        "Miso Soup", {"name":"Gyoza Soup", "options":["Beef", "Vegetable"]}, "Bowl of Rice"
-    ],
-    "Lunch": ["Sashimi", "Sashimi & California", "Sushi & California","Dynamite & California", "Spicy Rolles", "Combination Bento", "Sushi & Tempura Bento",
-        "Calfornia & Tempura Bento", "Teriyaki Bento", "Teriyaki & Tempura Bento", "Bulgogi Bento", "Tempura Bneto", "Vegetarian Bento", "Katsu Bento"
-    ],
-    "MainDish":["Tofu Teriyaki", "Chicken Teriyaki", "Beef Teriyaki", "Salmon Teriyaki", "Tempura Dinner", "Chicken Katsu", "Don Katsu", "Beef Donburi", 
-    "Chicken Donburi", "Chicken Katsu Donburi", "Don Katsu Donburi", "Shrimp Tempura Donburi", "Sashimi Donburi", "Unagi Donburi", {"name":"Bi Bim Bab",
-        "options":["Beef", "Chicken", "Vegetables", "Tofu"]}, "Dduk Bae Gi Bulgogi", "Bulgogi Dinner", "Spicy Bulgogi Dinner", "Spicy Chicken Dinner", 
-        "Japchae" ], 
-    "Noodle": [{"name":"U-don", "options":["Vegetable", "Chicken", "Beef", "Seafood", "Tempura"]}, 
-                {"name":"Ramen", "options":["Vegetable", "Chicken", "Beef", "Seafood"]},
-                {"name":"Yaki U-don", "options":["Shrimp", "Chicken", "Beef", "Spicy Bulgogi", "spicy Seafood", "Vegetables"]}],
-    "Bento": ["A (Sushi & Tempura)", "B (Sashimi & Tempura)", 
-    { "name": "C (Teriyaki & Tempura)", "options": ["Chicken", "Beef", "Salmon"]}, "D (Combination)", "E (Vegetarian)"],
-    "Roll": ["California", "Spicy California", "Tuna","Salmon", "Spicy Tuna", "Spicy Salmon", "Tuna-Avo", "Crab Meat", "Spicy crab Meat", "Unagi",
-        "Shrimp Tempura", "Shrimp-Avo", "Spicy Scallop", "Avocado", "Avo-Q", "Cucumber", "Shiitake", "Oshinko", "Yam Tempura", "Yam-Avo"
-    ],
-    "SpecialRoll": ["Fireball", "Dynamite", "Spider", "Rainbow", "Kamikaze", "Salmon Love", "Red Dragon", "Green Dragon", "Black Dragon", "Golden Dragon",
-        "White Dragon", "Crispy Salmon", "Crispy California", "Philadelphia", "Ocean Crab", "Fantastic", "Legend Dynamite", "Legend Dragon", "Tuna King",
-        "Alaska", "Samurai", "Futo Maki", "Tempura Mix", "Crazy Scallop", "SOS", "Chicken Teriyaki", "Bulgogi", "Light Philly", "Volcano", "Caterpillar", "Ever Green"
-    ],
-    "SushiCombo": ["Matus (18pcs)", "Take (16pcs)", "Maki Combo(22pcs)", "Roll n Bowl Special (25pcs)","Sashimi Dinner(15pcs)", "Chirashi Sushi(12pcs)",
-        "Salmon Don(7pcs)", "Tuna Don(7pcs)", "Salmon Lover(14pcs)", "Tuna Lover(14pcs)"
-    ],
-    "ComboForTwo": [{"name": "Choose one Teriyaki", "options":["chicken", "beef", "salmon", "bulgogi"]}],
-    "ALaCarto": ["Maguro", "Shiro Maguro", "Sake", "Ebi", "Tako", "Unagi", "Kani", "Inari", "Tamago"]
+   "Appetizer":[
+      "Edamame",
+      {
+         "name":"Gyoza",
+         "options":[
+            "Beef",
+            "Vegetable"
+         ]
+      },
+      "Age Tofu",
+      {
+         "name":"Mixed Tempura(7pcs)",
+         "desc":"Deep fried Shrimp 2pcs, vegetables 5pcs"
+      },
+      "Shrimp Tempura(5pcs)",
+      "Vegetbale Tempura(7pcs)",
+      "Spring Roll(4pcs)",
+      "Soft Shell Crab",
+      {
+         "name":"Sushi Pizza",
+         "options":[
+            "salmon",
+            "Tuna",
+            "Crab meat",
+            "avocado"
+         ]
+      },
+      "Jap Chae",
+      "Ebi Shumai(6pcs)",
+      "Takoyaki(6pcs)",
+      "Chicken Karaage(10pcs)",
+      {
+         "name":"Cala mari(10pcs)",
+         "desc":"Deep fried squid tube slices"
+      },
+      "Pressed Aburi Sushi(6pcs)"
+   ],
+   "SaladAndSoup":[
+      "Green Salad",
+      "Avocado Salad",
+      "Wakame Salad",
+      "Sunomono Salad",
+      "Spicy Salmon Salad",
+      "Spicy Tuna Salad",
+      "Kani Salad",
+      "Smoke Salmon Salad",
+      "Miso Soup",
+      {
+         "name":"Gyoza Soup",
+         "options":[
+            "Beef",
+            "Vegetable"
+         ]
+      },
+      "Bowl of Rice"
+   ],
+   "Lunch":[
+      "Sashimi",
+      "Sashimi & California",
+      "Sushi & California",
+      "Dynamite & California",
+      "Spicy Rolles",
+      "Combination Bento",
+      "Sushi & Tempura Bento",
+      "Calfornia & Tempura Bento",
+      "Teriyaki Bento",
+      "Teriyaki & Tempura Bento",
+      "Bulgogi Bento",
+      "Tempura Bneto",
+      "Vegetarian Bento",
+      "Katsu Bento"
+   ],
+   "MainDish":[
+      "Tofu Teriyaki",
+      "Chicken Teriyaki",
+      "Beef Teriyaki",
+      "Salmon Teriyaki",
+      "Tempura Dinner",
+      "Chicken Katsu",
+      "Don Katsu",
+      "Beef Donburi",
+      "Chicken Donburi",
+      "Chicken Katsu Donburi",
+      "Don Katsu Donburi",
+      "Shrimp Tempura Donburi",
+      "Sashimi Donburi",
+      "Unagi Donburi",
+      {
+         "name":"Bi Bim Bab",
+         "options":[
+            "Beef",
+            "Chicken",
+            "Vegetables",
+            "Tofu"
+         ]
+      },
+      "Dduk Bae Gi Bulgogi",
+      "Bulgogi Dinner",
+      "Spicy Bulgogi Dinner",
+      "Spicy Chicken Dinner",
+      "Japchae"
+   ],
+   "Noodle":[
+      {
+         "name":"U-don",
+         "options":[
+            "Vegetable",
+            "Chicken",
+            "Beef",
+            "Seafood",
+            "Tempura"
+         ]
+      },
+      {
+         "name":"Ramen",
+         "options":[
+            "Vegetable",
+            "Chicken",
+            "Beef",
+            "Seafood"
+         ]
+      },
+      {
+         "name":"Yaki U-don",
+         "options":[
+            "Shrimp",
+            "Chicken",
+            "Beef",
+            "Spicy Bulgogi",
+            "spicy Seafood",
+            "Vegetables"
+         ]
+      }
+   ],
+   "Bento":[
+      "A (Sushi & Tempura)",
+      "B (Sashimi & Tempura)",
+      {
+         "name":"C (Teriyaki & Tempura)",
+         "options":[
+            "Chicken",
+            "Beef",
+            "Salmon"
+         ]
+      },
+      "D (Combination)",
+      "E (Vegetarian)"
+   ],
+   "Roll":[
+      "California",
+      "Spicy California",
+      "Tuna",
+      "Salmon",
+      "Spicy Tuna",
+      "Spicy Salmon",
+      "Tuna-Avo",
+      "Crab Meat",
+      "Spicy crab Meat",
+      "Unagi",
+      "Shrimp Tempura",
+      "Shrimp-Avo",
+      "Spicy Scallop",
+      "Avocado",
+      "Avo-Q",
+      "Cucumber",
+      "Shiitake",
+      "Oshinko",
+      "Yam Tempura",
+      "Yam-Avo"
+   ],
+   "SpecialRoll":[
+      "Fireball",
+      "Dynamite",
+      "Spider",
+      "Rainbow",
+      "Kamikaze",
+      "Salmon Love",
+      "Red Dragon",
+      "Green Dragon",
+      "Black Dragon",
+      "Golden Dragon",
+      "White Dragon",
+      "Crispy Salmon",
+      "Crispy California",
+      "Philadelphia",
+      "Ocean Crab",
+      "Fantastic",
+      "Legend Dynamite",
+      "Legend Dragon",
+      "Tuna King",
+      "Alaska",
+      "Samurai",
+      "Futo Maki",
+      "Tempura Mix",
+      "Crazy Scallop",
+      "SOS",
+      "Chicken Teriyaki",
+      "Bulgogi",
+      "Light Philly",
+      "Volcano",
+      "Caterpillar",
+      "Ever Green"
+   ],
+   "SushiCombo":[
+      "Matus (18pcs)",
+      "Take (16pcs)",
+      "Maki Combo(22pcs)",
+      "Roll n Bowl Special (25pcs)",
+      "Sashimi Dinner(15pcs)",
+      "Chirashi Sushi(12pcs)",
+      "Salmon Don(7pcs)",
+      "Tuna Don(7pcs)",
+      "Salmon Lover(14pcs)",
+      "Tuna Lover(14pcs)"
+   ],
+   "ComboForTwo":[
+      {
+         "name":"Choose one Teriyaki",
+         "options":[
+            "chicken",
+            "beef",
+            "salmon",
+            "bulgogi"
+         ]
+      }
+   ],
+   "ALaCarto":[
+      "Maguro",
+      "Shiro Maguro",
+      "Sake",
+      "Ebi",
+      "Tako",
+      "Unagi",
+      "Kani",
+      "Inari",
+      "Tamago"
+   ]
 }

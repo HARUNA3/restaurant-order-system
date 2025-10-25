@@ -5,13 +5,13 @@ fetch('/public/data/menuData.json')
     })
     .then(menuData => {
         //Transform data
-        menuData.Roll = menuData.Roll.map(item =>
+        menuData.Roll = (menuData.Roll || []).map(item =>
             typeof item === "string"
             ? {name: item, options: ["roll", "hand roll"] }
             : {...item, options: item.options ?? ["roll", "hand roll"]}
         );
 
-        menuData.ALaCarto = menuData.ALaCarto.map(item =>
+        menuData.ALaCarto = (menuData.ALaCarto || []).map(item =>
             typeof item === "string"
             ? {name: item, options: ["Sashimi", "Sushi"] }
             : {...item, options: item.options ?? ["Sashimi", "Sushi"]}
