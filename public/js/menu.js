@@ -1,4 +1,4 @@
-fetch('/public/data/menuData.json')
+fetch('/data/menuData.json')
     .then(res => {
         if(!res.ok) throw new Error(`HTTP: ${res.status}`);
         return res.json();
